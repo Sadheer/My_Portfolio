@@ -1,0 +1,553 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Muhammad Sadheer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: dark indigo world. A playable bubble-shooter hero (canvas), a marquee of tools, colour-coded app cards, a dated experience rail, projects, skills, contact. */
+:root {
+  --bg: #12102B;
+  --surface: #1C1A42;
+  --surface-2: #25225A;
+  --fg: #F4F2FF;
+  --muted: #B0ADDC;
+  --line: #36336F;
+  --coral: #FF6B6B;
+  --sun: #FFD166;
+  --mint: #06D6A0;
+  --sky: #4CC9F0;
+  --violet: #B388FF;
+  --ink: #12102B;
+  --font-display: "Bowlby One", Impact, "Arial Black", sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+p { margin: 0; }
+a { color: var(--sky); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 6px; }
+.wrap {
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px));
+}
+.label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+.label::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--c, var(--sun)); flex: none; }
+h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 5vw, 52px); line-height: 1.02; margin: 14px 0 32px; text-wrap: balance; }
+h3 { font-family: var(--font-display); font-weight: 400; font-size: 21px; line-height: 1.15; margin: 0; }
+section { padding-block: 72px 0; }
+
+/* Top bar */
+.top { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center; padding-block: 18px; }
+.mark { font-family: var(--font-mono); font-size: 14px; font-weight: 500; color: var(--fg); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.mark i { width: 12px; height: 12px; border-radius: 50%; background: var(--mint); display: inline-block; }
+.top nav { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.top nav a { color: var(--muted); font-size: 14px; text-decoration: none; }
+.top nav a:hover { color: var(--sun); }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; border-block: 1px solid var(--line); background: radial-gradient(120% 90% at 85% 0%, var(--surface-2) 0%, var(--bg) 60%); }
+#field { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: manipulation; cursor: crosshair; }
+.hero-in { position: relative; padding-block: 64px 120px; pointer-events: none; }
+.hero-in a, .hero-in button { pointer-events: auto; }
+.hero h1 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(46px, 11.5vw, 132px); line-height: 0.92; letter-spacing: -0.01em;
+  text-transform: uppercase; margin: 18px 0 24px; text-wrap: balance;
+  text-shadow: 0 4px 40px var(--bg), 0 0 8px rgba(18, 16, 43, 0.6);
+}
+.hero h1 span { color: var(--sun); }
+.hero .lede { font-size: clamp(17px, 2.2vw, 21px); max-width: 33em; text-shadow: 0 2px 18px var(--bg); }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; padding: 0; list-style: none; }
+.facts li { font-family: var(--font-mono); font-size: 13px; padding: 6px 12px; border-radius: 999px; background: rgba(28, 26, 66, 0.85); border: 1px solid var(--line); }
+.facts li b { color: var(--mint); font-weight: 500; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.btn { display: inline-block; font-weight: 600; font-size: 15px; text-decoration: none; padding: 12px 20px; border-radius: 999px; border: 2px solid var(--fg); color: var(--fg); background: rgba(18, 16, 43, 0.6); }
+.btn.primary { background: var(--sun); border-color: var(--sun); color: var(--ink); }
+.btn:hover { transform: translateY(-2px); border-color: var(--sun); }
+.hint { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); bottom: 14px; z-index: 1; font-family: var(--font-mono); font-size: 12px; color: var(--muted); background: rgba(18, 16, 43, 0.75); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); pointer-events: none; }
+.hint b { color: var(--sun); font-weight: 500; font-variant-numeric: tabular-nums; }
+
+/* Ticker */
+.ticker { overflow: hidden; background: var(--sun); color: var(--ink); border-bottom: 1px solid var(--line); }
+.track { display: flex; width: max-content; animation: slide 38s linear infinite; }
+.track ul { display: flex; align-items: center; margin: 0; padding: 0; list-style: none; }
+.track li { font-family: var(--font-display); font-size: 18px; text-transform: uppercase; padding: 12px 0; white-space: nowrap; display: flex; align-items: center; }
+.track li::after { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--ink); margin-inline: 26px; opacity: 0.85; }
+@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Apps */
+.apps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.app {
+  background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--c); border-radius: 22px;
+  padding: 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; position: relative; overflow: hidden;
+}
+.app::after { content: ""; position: absolute; width: 170px; height: 170px; border-radius: 50%; right: -60px; top: -60px; background: var(--c); opacity: 0.14; pointer-events: none; }
+.app.wide { grid-column: span 2; }
+.app:hover { box-shadow: 0 0 0 2px var(--c), 0 18px 40px -18px var(--c); transform: translateY(-4px); }
+.app .row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.glyph { width: 52px; height: 52px; border-radius: 50%; background: var(--c); color: var(--ink); display: grid; place-items: center; font-family: var(--font-display); font-size: 17px; box-shadow: inset -6px -6px 0 rgba(18, 16, 43, 0.18), inset 5px 5px 0 rgba(255, 255, 255, 0.35); }
+.pill { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; color: var(--mint); border: 1px solid var(--mint); white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--mint); }
+.pkg { font-family: var(--font-mono); font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.app p.desc { font-size: 16px; }
+.app .where { font-size: 13px; color: var(--muted); }
+.go { margin-top: auto; align-self: flex-start; font-weight: 600; font-size: 15px; color: var(--ink); background: var(--c); padding: 9px 16px; border-radius: 999px; text-decoration: none; }
+.go:hover { filter: brightness(1.1); }
+
+/* Experience */
+.rail { border-left: 2px solid var(--line); margin-left: 7px; }
+.job { position: relative; display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 6px 28px; padding: 6px 0 40px 34px; }
+.job:last-child { padding-bottom: 0; }
+.job::before { content: ""; position: absolute; left: -9px; top: 10px; width: 16px; height: 16px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 5px var(--bg); }
+.when { font-family: var(--font-mono); font-size: 13px; color: var(--c); padding-top: 6px; }
+.job .org { color: var(--muted); margin-top: 2px; }
+.job ul { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 6px; }
+.job li { max-width: 64ch; }
+.job li::marker { color: var(--c); }
+
+/* Projects + skills */
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+.proj { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 20px 20px 22px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.proj i { width: 18px; height: 18px; border-radius: 50%; background: var(--c); display: block; }
+.proj p { color: var(--muted); font-size: 15px; }
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 28px; }
+.skills h3 { font-size: 16px; margin-bottom: 12px; color: var(--c); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+.chips li { font-family: var(--font-mono); font-size: 13px; padding: 5px 12px; border-radius: 999px; border: 1.5px solid var(--c); }
+.edu { margin-top: 36px; padding: 18px 20px; border: 1px dashed var(--line); border-radius: 14px; color: var(--muted); }
+.edu b { color: var(--fg); font-weight: 600; }
+
+/* Contact */
+.contact-band { margin-top: 88px; background: var(--sun); color: var(--ink); }
+.contact { padding-block: 64px 36px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 36px; align-items: end; }
+.contact h2 { font-size: clamp(38px, 8vw, 84px); margin: 0 0 14px; }
+.contact .label { color: rgba(18, 16, 43, 0.75); margin-bottom: 14px; }
+.contact .label::before { background: var(--ink); }
+.clist { display: grid; gap: 14px; font-size: 17px; }
+.clist .k { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; display: block; opacity: 0.7; }
+.clist a { color: var(--ink); font-weight: 600; }
+.mail { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.mail code { font-family: var(--font-mono); font-size: 16px; font-weight: 500; user-select: all; overflow-wrap: anywhere; }
+.copy { font: 600 13px var(--font-body); padding: 6px 14px; border-radius: 999px; border: 2px solid var(--ink); background: var(--ink); color: var(--sun); cursor: pointer; }
+.copy:hover { background: transparent; color: var(--ink); }
+.foot { padding-bottom: 32px; font-family: var(--font-mono); font-size: 13px; color: rgba(18, 16, 43, 0.75); }
+
+@media (max-width: 900px) {
+  .apps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .app.wide { grid-column: span 2; }
+}
+@media (max-width: 620px) {
+  .apps { grid-template-columns: minmax(0, 1fr); }
+  .app.wide { grid-column: auto; }
+  .job { grid-template-columns: minmax(0, 1fr); }
+  .when { padding-top: 0; }
+  .hero-in { padding-block: 40px 110px; }
+  .hint { left: max(16px, env(safe-area-inset-left, 0px)); right: auto; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn, .app, .go { transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease, border-color 0.18s ease; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; flex-wrap: wrap; width: auto; }
+  .track ul:last-child { display: none; }
+  .track ul { flex-wrap: wrap; padding-inline: 16px; }
+}
+</style>
+
+<header class="wrap top">
+  <a class="mark" href="#top"><i></i>msadheer / android</a>
+  <nav aria-label="Sections">
+    <a href="#apps">Apps</a>
+    <a href="#experience">Experience</a>
+    <a href="#work">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero" id="hero">
+    <canvas id="field" aria-hidden="true"></canvas>
+    <div class="wrap hero-in">
+      <p class="label" style="--c: var(--mint)">Android developer · Rawalpindi, Pakistan</p>
+      <h1>Muhammad <span>Sadheer</span></h1>
+      <p class="lede">I build and publish Android apps with Kotlin, Jetpack Compose and Firebase, from the first architecture sketch to the Google Play release. I also train machine learning models in Python.</p>
+      <ul class="facts">
+        <li><b>5</b> apps on Google Play</li>
+        <li>1.5+ years in Android</li>
+        <li>Now at Funsol</li>
+      </ul>
+      <div class="actions">
+        <a class="btn primary" href="#apps">See the apps</a>
+        <a class="btn" href="https://github.com/Sadheer" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/muhammad-sadheer-6548432b3" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="hint" aria-hidden="true">Click the bubbles to shoot · popped <b id="popped">0</b></div>
+  </div>
+
+  <div class="ticker" aria-label="Technologies">
+    <div class="track">
+      <ul>
+        <li>Kotlin</li><li>Jetpack Compose</li><li>Firebase</li><li>MVVM</li><li>Room DB</li><li>REST APIs</li><li>Python</li><li>TensorFlow</li><li>Scikit-learn</li><li>Git &amp; GitHub</li><li>Gradle</li><li>Play Store</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Kotlin</li><li>Jetpack Compose</li><li>Firebase</li><li>MVVM</li><li>Room DB</li><li>REST APIs</li><li>Python</li><li>TensorFlow</li><li>Scikit-learn</li><li>Git &amp; GitHub</li><li>Gradle</li><li>Play Store</li>
+      </ul>
+    </div>
+  </div>
+
+  <section id="apps" class="wrap">
+    <p class="label" style="--c: var(--sky)">On Google Play</p>
+    <h2>Five apps, all live</h2>
+    <div class="apps">
+      <article class="app wide" style="--c: var(--sky)">
+        <div class="row"><div class="glyph">TV</div><span class="pill">Live</span></div>
+        <h3>IPTV Player – Live TV &amp; M3U Player</h3>
+        <p class="pkg">com.iptvplayyer.livetttv.m3uplayer</p>
+        <p class="desc">Live TV streaming player with M3U playlist support.</p>
+        <p class="where">Built at Funsol</p>
+        <a class="go" href="https://play.google.com/store/apps/details?id=com.iptvplayyer.livetttv.m3uplayer" target="_blank" rel="noopener">Open on Google Play</a>
+      </article>
+      <article class="app" style="--c: var(--mint)">
+        <div class="row"><div class="glyph">QR</div><span class="pill">Live</span></div>
+        <h3>ScanQR Pro</h3>
+        <p class="pkg">org.scanqr.scanner</p>
+        <p class="desc">Multi-format QR scanner with CSV and JSON export.</p>
+        <p class="where">Built at Ashtech Solutions</p>
+        <a class="go" href="https://play.google.com/store/apps/details?id=org.scanqr.scanner" target="_blank" rel="noopener">Open on Google Play</a>
+      </article>
+      <article class="app" style="--c: var(--coral)">
+        <div class="row"><div class="glyph">PDF</div><span class="pill">Live</span></div>
+        <h3>PDF Reader</h3>
+        <p class="pkg">pdf.pdfreader.pdfviewer.pdfeditor.pro</p>
+        <p class="desc">Lightweight PDF reader and document manager.</p>
+        <p class="where">Built at Ashtech Solutions</p>
+        <a class="go" href="https://play.google.com/store/apps/details?id=pdf.pdfreader.pdfviewer.pdfeditor.pro" target="_blank" rel="noopener">Open on Google Play</a>
+      </article>
+      <article class="app" style="--c: var(--violet)">
+        <div class="row"><div class="glyph">Wi</div><span class="pill">Live</span></div>
+        <h3>Wi-Fi QR Code Scanner</h3>
+        <p class="pkg">com.wifiqrscanner.wifiqrcodescanner</p>
+        <p class="desc">Connects to a Wi-Fi network instantly by scanning its QR code.</p>
+        <p class="where">Built at Ashtech Solutions</p>
+        <a class="go" href="https://play.google.com/store/apps/details?id=com.wifiqrscanner.wifiqrcodescanner" target="_blank" rel="noopener">Open on Google Play</a>
+      </article>
+      <article class="app" style="--c: var(--sun)">
+        <div class="row"><div class="glyph">Bb</div><span class="pill">Live</span></div>
+        <h3>Tropipop Bubble Shooter</h3>
+        <p class="pkg">com.tropipop.bubbleshooter.pop</p>
+        <p class="desc">Casual bubble shooter game written in Kotlin. Pop a few in the header above.</p>
+        <p class="where">Built at Ashtech Solutions</p>
+        <a class="go" href="https://play.google.com/store/apps/details?id=com.tropipop.bubbleshooter.pop" target="_blank" rel="noopener">Open on Google Play</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience" class="wrap">
+    <p class="label" style="--c: var(--coral)">Experience</p>
+    <h2>Where I have worked</h2>
+    <div class="rail">
+      <div class="job" style="--c: var(--sky)">
+        <div class="when">Aug 2026 – Present</div>
+        <div>
+          <h3>Android Developer</h3>
+          <p class="org"><a href="https://funsoltech.com/" target="_blank" rel="noopener">Funsol</a></p>
+          <ul>
+            <li>Develop and maintain Android apps in Kotlin and Jetpack Compose within an agile production team.</li>
+            <li>Work with cross-functional teammates on feature design, code reviews and release cycles.</li>
+            <li>Contribute Firebase-backed features, including authentication and real-time data sync.</li>
+            <li>Published the IPTV Player app on Google Play.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job" style="--c: var(--mint)">
+        <div class="when">Feb 2025 – Aug 2026</div>
+        <div>
+          <h3>Android Developer</h3>
+          <p class="org">Ashtech Solutions</p>
+          <ul>
+            <li>Promoted from intern to developer for technical performance and delivery quality.</li>
+            <li>Developed and published Wi-Fi QR Code Scanner, PDF Reader, ScanQR Pro and Tropipop Bubble Shooter on Google Play.</li>
+            <li>Collaborated on app architecture, feature development and bug fixing for scalable production apps.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job" style="--c: var(--violet)">
+        <div class="when">2023 – Feb 2025</div>
+        <div>
+          <h3>Independent Android Developer</h3>
+          <p class="org">Self-employed</p>
+          <ul>
+            <li>Built a university notification app, a CRM prototype, a parental control prototype and a task manager.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job" style="--c: var(--sun)">
+        <div class="when">Jan 2024 – Apr 2024</div>
+        <div>
+          <h3>AI Trainee</h3>
+          <p class="org">Corvit Institute</p>
+          <ul>
+            <li>Built machine learning models for bitcoin price forecasting and car price estimation using Python, TensorFlow and Scikit-learn.</li>
+            <li>Visualised trends with Matplotlib and Seaborn.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="wrap">
+    <p class="label" style="--c: var(--violet)">Independent work</p>
+    <h2>Projects</h2>
+    <div class="projects">
+      <article class="proj" style="--c: var(--coral)"><i></i><h3>University Notification App</h3><p>In-app notifications so students and staff receive university updates and announcements.</p></article>
+      <article class="proj" style="--c: var(--sky)"><i></i><h3>NextEra CRM Prototype</h3><p>Project and task management system for business clients.</p></article>
+      <article class="proj" style="--c: var(--mint)"><i></i><h3>Safe Track</h3><p>Parental control prototype that monitors child device activity.</p></article>
+      <article class="proj" style="--c: var(--sun)"><i></i><h3>Task Manager</h3><p>Tasks with descriptions, due dates, priority flags and completion status.</p></article>
+      <article class="proj" style="--c: var(--violet)"><i></i><h3>Course Management App</h3><p>Firebase-powered tracker for academic records and credit hours.</p></article>
+    </div>
+  </section>
+
+  <section id="skills" class="wrap">
+    <p class="label" style="--c: var(--mint)">Toolbox</p>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div style="--c: var(--sky)">
+        <h3>Mobile</h3>
+        <ul class="chips"><li>Kotlin</li><li>Jetpack Compose</li><li>Android Studio</li><li>MVVM</li><li>Room DB</li><li>REST APIs</li><li>Firebase Auth</li><li>Realtime DB</li><li>Play Store</li></ul>
+      </div>
+      <div style="--c: var(--sun)">
+        <h3>AI and Python</h3>
+        <ul class="chips"><li>Python</li><li>TensorFlow</li><li>Scikit-learn</li><li>Pandas</li><li>NumPy</li><li>Matplotlib</li></ul>
+      </div>
+      <div style="--c: var(--coral)">
+        <h3>Tools</h3>
+        <ul class="chips"><li>Git</li><li>GitHub</li> <li>Gitlab</li><li>Figma</li></li><li>Gradle</li><li>Android Studio Debugger</li></ul>
+      </div>
+    </div>
+    <p class="edu"><b>Education.</b> BS Computer Science, University of Azad Jammu &amp; Kashmir, 2020 – 2024, with a focus on mobile development and AI foundations.</p>
+  </section>
+</main>
+
+<footer class="contact-band" id="contact">
+  <div class="wrap contact">
+    <div>
+      <p class="label">Contact</p>
+      <h2>Say hello</h2>
+      <p>I also run Android and Python coding workshops. Languages: English and Urdu.</p>
+    </div>
+    <div class="clist">
+      <div>
+        <span class="k">Email</span>
+        <div class="mail">
+          <code id="mail">muhammadsadheer2018@gmail.com</code>
+          <button class="copy" id="copy" type="button">Copy</button>
+        </div>
+      </div>
+      <div><span class="k">Phone</span>+92-3460521348</div>
+      <div><span class="k">Location</span>Rawalpindi, Pakistan</div>
+      <div><span class="k">Elsewhere</span>
+        <a href="https://github.com/Sadheer" target="_blank" rel="noopener">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/muhammad-sadheer-6548432b3" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap foot">© 2026 Muhammad Sadheer</div>
+</footer>
+
+<script>
+(function () {
+  /* Email copy button */
+  var btn = document.getElementById("copy");
+  var code = document.getElementById("mail");
+  function selectText() {
+    try {
+      var r = document.createRange();
+      r.selectNodeContents(code);
+      var s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+    } catch (e) {}
+  }
+  btn.addEventListener("click", function () {
+    var text = code.textContent.trim();
+    function done() { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1800); }
+    try {
+      navigator.clipboard.writeText(text).then(done, function () { selectText(); btn.textContent = "Selected"; });
+    } catch (e) { selectText(); btn.textContent = "Selected"; }
+  });
+
+  /* Bubble field */
+  var hero = document.getElementById("hero");
+  var cv = document.getElementById("field");
+  var ctx = cv.getContext("2d");
+  var counter = document.getElementById("popped");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var COLORS = ["#FF6B6B", "#FFD166", "#06D6A0", "#4CC9F0", "#B388FF"];
+  var W = 0, H = 0, dpr = 1, target = 20;
+  var bubbles = [], shots = [], parts = [];
+  var popped = 0, running = false;
+  var mouse = { x: -999, y: -999, in: false };
+
+  function rnd(a, b) { return a + Math.random() * (b - a); }
+  function pick() { return COLORS[(Math.random() * COLORS.length) | 0]; }
+  function make(fromBottom) {
+    var r = rnd(14, 44);
+    return { x: rnd(0, W), y: fromBottom ? H + r : rnd(0, H), r: r, c: pick(), vy: -rnd(0.15, 0.45), ph: rnd(0, 6.28), sp: rnd(0.008, 0.02) };
+  }
+
+  function resize() {
+    var rect = hero.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = rect.width; H = rect.height;
+    cv.width = Math.round(W * dpr);
+    cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    target = Math.max(12, Math.min(44, Math.round((W * H) / 13000)));
+    while (bubbles.length < target) bubbles.push(make(false));
+    if (bubbles.length > target) bubbles.length = target;
+    for (var i = 0; i < bubbles.length; i++) {
+      var b = bubbles[i];
+      if (b.x > W) b.x = rnd(0, W);
+      if (b.y > H + b.r) b.y = rnd(0, H);
+    }
+    draw();
+  }
+
+  function cannon() { return { x: W / 2, y: H + 4 }; }
+
+  function drawBubble(b) {
+    ctx.globalAlpha = 0.5;
+    ctx.fillStyle = b.c;
+    ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, 6.2832); ctx.fill();
+    ctx.globalAlpha = 0.95;
+    ctx.lineWidth = 2.5; ctx.strokeStyle = b.c;
+    ctx.beginPath(); ctx.arc(b.x, b.y, b.r - 1, 0, 6.2832); ctx.stroke();
+    ctx.globalAlpha = 0.7;
+    ctx.fillStyle = "#FFFFFF";
+    ctx.beginPath(); ctx.ellipse(b.x - b.r * 0.38, b.y - b.r * 0.4, b.r * 0.2, b.r * 0.11, -0.7, 0, 6.2832); ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    var i;
+    for (i = 0; i < bubbles.length; i++) drawBubble(bubbles[i]);
+    for (i = 0; i < parts.length; i++) {
+      var p = parts[i];
+      ctx.globalAlpha = Math.max(0, p.life / 28);
+      ctx.fillStyle = p.c;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    for (i = 0; i < shots.length; i++) drawBubble(shots[i]);
+    /* cannon */
+    var c = cannon();
+    var tx = mouse.in ? mouse.x : c.x, ty = mouse.in ? mouse.y : 0;
+    var ang = Math.atan2(Math.min(ty - c.y, -20), tx - c.x);
+    ctx.save();
+    ctx.translate(c.x, c.y);
+    ctx.rotate(ang);
+    ctx.fillStyle = "#FFD166";
+    ctx.fillRect(0, -9, 46, 18);
+    ctx.restore();
+    ctx.fillStyle = "#FFD166";
+    ctx.beginPath(); ctx.arc(c.x, c.y, 26, 0, 6.2832); ctx.fill();
+    ctx.fillStyle = "#12102B";
+    ctx.beginPath(); ctx.arc(c.x, c.y, 9, 0, 6.2832); ctx.fill();
+  }
+
+  function pop(index) {
+    var b = bubbles[index];
+    bubbles.splice(index, 1);
+    for (var k = 0; k < 12; k++) {
+      var a = rnd(0, 6.2832), s = rnd(1, 4.5);
+      parts.push({ x: b.x, y: b.y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, r: rnd(2, 5), c: b.c, life: 28 });
+    }
+    popped += 1;
+    counter.textContent = String(popped);
+    setTimeout(function () { if (bubbles.length < target) bubbles.push(make(true)); }, 700);
+  }
+
+  function update() {
+    var i, b;
+    for (i = 0; i < bubbles.length; i++) {
+      b = bubbles[i];
+      if (!reduce) {
+        b.ph += b.sp;
+        b.x += Math.sin(b.ph) * 0.35;
+        b.y += b.vy;
+        if (mouse.in) {
+          var dx = b.x - mouse.x, dy = b.y - mouse.y, d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 120 && d > 0) { var f = (1 - d / 120) * 1.6; b.x += (dx / d) * f; b.y += (dy / d) * f; }
+        }
+        if (b.y < -b.r) { b.y = H + b.r; b.x = rnd(0, W); }
+      }
+    }
+    for (i = shots.length - 1; i >= 0; i--) {
+      var s = shots[i];
+      s.x += s.vx; s.y += s.vy;
+      if (s.x < -40 || s.x > W + 40 || s.y < -40 || s.y > H + 60) { shots.splice(i, 1); continue; }
+      for (var j = 0; j < bubbles.length; j++) {
+        var q = bubbles[j], ex = q.x - s.x, ey = q.y - s.y;
+        if (ex * ex + ey * ey < (q.r + s.r) * (q.r + s.r)) { pop(j); shots.splice(i, 1); break; }
+      }
+    }
+    for (i = parts.length - 1; i >= 0; i--) {
+      var p = parts[i];
+      p.x += p.vx; p.y += p.vy; p.vy += 0.08; p.life -= 1;
+      if (p.life <= 0) parts.splice(i, 1);
+    }
+  }
+
+  function tick() {
+    if (!running) return;
+    update(); draw();
+    requestAnimationFrame(tick);
+  }
+  function start() { if (!running) { running = true; requestAnimationFrame(tick); } }
+  function stop() { running = false; }
+
+  function local(e) {
+    var r = cv.getBoundingClientRect();
+    return { x: e.clientX - r.left, y: e.clientY - r.top };
+  }
+  hero.addEventListener("pointermove", function (e) {
+    var p = local(e); mouse.x = p.x; mouse.y = p.y; mouse.in = true;
+  });
+  hero.addEventListener("pointerleave", function () { mouse.in = false; });
+  hero.addEventListener("pointerdown", function (e) {
+    if (e.target.closest && e.target.closest("a, button")) return;
+    var p = local(e), c = cannon();
+    var dx = p.x - c.x, dy = Math.min(p.y - c.y, -20);
+    var len = Math.sqrt(dx * dx + dy * dy) || 1;
+    mouse.x = p.x; mouse.y = p.y; mouse.in = true;
+    shots.push({ x: c.x + (dx / len) * 46, y: c.y + (dy / len) * 46, vx: (dx / len) * 13, vy: (dy / len) * 13, r: 12, c: pick() });
+    start();
+  });
+
+  resize();
+  if (window.ResizeObserver) new ResizeObserver(resize).observe(hero);
+  else window.addEventListener("resize", resize);
+
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) start(); else stop();
+    }).observe(hero);
+  } else { start(); }
+  document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); });
+})();
+</script>
+
+</body></html>
