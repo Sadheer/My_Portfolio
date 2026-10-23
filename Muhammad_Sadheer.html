@@ -1,11 +1,15 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Muhammad Sadheer</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muhammad Sadheer | Android Developer</title>
+<meta name="description" content="Portfolio of Muhammad Sadheer, Android developer building Kotlin and Jetpack Compose apps on Google Play.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: dark indigo world. A playable bubble-shooter hero (canvas), a marquee of tools, colour-coded app cards, a dated experience rail, projects, skills, contact. */
+/* Layout: dark indigo world. A clean gradient hero, a marquee of tools, colour-coded app cards, a dated experience rail, projects, skills, contact. */
 :root {
   --bg: #12102B;
   --surface: #1C1A42;
@@ -25,7 +29,9 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
+  margin: 0;
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
@@ -56,9 +62,7 @@ section { padding-block: 72px 0; }
 
 /* Hero */
 .hero { position: relative; overflow: hidden; border-block: 1px solid var(--line); background: radial-gradient(120% 90% at 85% 0%, var(--surface-2) 0%, var(--bg) 60%); }
-#field { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: manipulation; cursor: crosshair; }
-.hero-in { position: relative; padding-block: 64px 120px; pointer-events: none; }
-.hero-in a, .hero-in button { pointer-events: auto; }
+.hero-in { position: relative; padding-block: 64px 72px; }
 .hero h1 {
   font-family: var(--font-display); font-weight: 400;
   font-size: clamp(46px, 11.5vw, 132px); line-height: 0.92; letter-spacing: -0.01em;
@@ -74,8 +78,6 @@ section { padding-block: 72px 0; }
 .btn { display: inline-block; font-weight: 600; font-size: 15px; text-decoration: none; padding: 12px 20px; border-radius: 999px; border: 2px solid var(--fg); color: var(--fg); background: rgba(18, 16, 43, 0.6); }
 .btn.primary { background: var(--sun); border-color: var(--sun); color: var(--ink); }
 .btn:hover { transform: translateY(-2px); border-color: var(--sun); }
-.hint { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); bottom: 14px; z-index: 1; font-family: var(--font-mono); font-size: 12px; color: var(--muted); background: rgba(18, 16, 43, 0.75); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); pointer-events: none; }
-.hint b { color: var(--sun); font-weight: 500; font-variant-numeric: tabular-nums; }
 
 /* Ticker */
 .ticker { overflow: hidden; background: var(--sun); color: var(--ink); border-bottom: 1px solid var(--line); }
@@ -133,6 +135,212 @@ section { padding-block: 72px 0; }
 .contact h2 { font-size: clamp(38px, 8vw, 84px); margin: 0 0 14px; }
 .contact .label { color: rgba(18, 16, 43, 0.75); margin-bottom: 14px; }
 .contact .label::before { background: var(--ink); }
+.clist { display: grid; gap: 14px; font-size: 17px; }
+.clist .k { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; display: block; opacity: 0.7; }
+.clist a { color: var(--ink); font-weight: 600; }
+.mail { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.mail code { font-family: var(--font-mono); font-size: 16px; font-weight: 500; user-select: all; overflow-wrap: anywhere; }
+.copy { font: 600 13px var(--font-body); padding: 6px 14px; border-radius: 999px; border: 2px solid var(--ink); background: var(--ink); color: var(--sun); cursor: pointer; }
+.copy:hover { background: transparent; color: var(--ink); }
+.foot { padding-bottom: 32px; font-family: var(--font-mono); font-size: 13px; color: rgba(18, 16, 43, 0.75); }
+
+@media (max-width: 900px) {
+  .apps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .app.wide { grid-column: span 2; }
+}
+@media (max-width: 620px) {
+  .apps { grid-template-columns: minmax(0, 1fr); }
+  .app.wide { grid-column: auto; }
+  .job { grid-template-columns: minmax(0, 1fr); }
+  .when { padding-top: 0; }
+  .hero-in { padding-block: 40px 56px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn, .app, .go { transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease, border-color 0.18s ease; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .track { animation: none; flex-wrap: wrap; width: auto; }
+  .track ul:last-child { display: none; }
+  .track ul { flex-wrap: wrap; padding-inline: 16px; }
+}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="mark" href="#top"><i></i>msadheer / android</a>
+  <nav aria-label="Sections">
+    <a href="#apps">Apps</a>
+    <a href="#experience">Experience</a>
+    <a href="#work">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="hero" id="hero">
+    <div class="wrap hero-in">
+      <p class="label" style="--c: var(--mint)">Android developer · Rawalpindi, Pakistan</p>
+      <h1>Muhammad <span>Sadheer</span></h1>
+      <p class="lede">I build and publish Android apps with Kotlin, Jetpack Compose and Firebase, from the first architecture sketch to the Google Play release. I also train machine learning models in Python.</p>
+      <ul class="facts">
+        <li><b>5</b> apps on Google Play</li>
+        <li>1.5+ years in Android</li>
+        <li>Now at Funsol</li>
+      </ul>
+      <div class="actions">
+        <a class="btn primary" href="#apps">See the apps</a>
+        <a class="btn" href="https://github.com/Sadheer" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/muhammad-sadheer-6548432b3" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker" aria-label="Technologies">
+    <div class="track">
+      <ul>
+        <li>Kotlin</li><li>Jetpack Compose</li><li>Firebase</li><li>MVVM</li><li>Room DB</li><li>REST APIs</li><li>Python</li><li>TensorFlow</li><li>Scikit-learn</li><li>Git &amp; GitHub</li><li>Gradle</li><li>Play Store</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Kotlin</li><li>Jetpack Compose</li><li>Firebase</li><li>MVVM</li><li>Room DB</li><li>REST APIs</li><li>Python</li><li>TensorFlow</li><li>Scikit-learn</li><li>Git &amp; GitHub</li><li>Gradle</li><li>Play Store</li>
+      </ul>
+    </div>
+  </div>
+
+  <section id="apps" class="wrap">
+    <p class="label" style="--c: var(--sky)">On Google Play</p>
+    <h2>Five apps, all live</h2>
+    <div class="apps">
+      <article class="app wide" style="--c: var(--sky)">
+        <div class="row"><div class="glyph">TV</div><span class="pill">Live</span></div>
+        <h3>IPTV Player – Live TV &amp; M3U Player</h3>
+        <p class="pkg">com.iptvplayer.livetv.m3uplayer</p>
+        <p class="desc">Live TV streaming player with M3U playlist support.</p>
+        <p class="where">Built at Funsol</p>
+        <a class="go" href="https://play.google.com/store/apps/details?id=com.iptvplayer.livetv.m3uplayer" target="_blank" rel="noopener">Open on Google Play</a>
+      </article>
+      <article class="app" style="--c: var(--mint)">
+        <div class="row"><div class="glyph">QR</div><span class="pill">Live</span></div>
+        <h3>ScanQR Pro</h3>
+        <p class="pkg">org.scanqr.scanner</p>
+        <p class="desc">Multi-format QR scanner with CSV and JSON export.</p>
+        <p class="where">Built at Ashtech Solutions</p>
+        <a class="go" href="https://play.google.com/store/apps/details?id=org.scanqr.scanner" target="_blank" rel="noopener">Open on Google Play</a>
+      </article>
+      <article class="app" style="--c: var(--coral)">
+        <div class="row"><div class="glyph">PDF</div><span class="pill">Live</span></div>
+        <h3>PDF Reader</h3>
+        <p class="pkg">pdf.pdfreader.pdfviewer.pdfeditor.pro</p>
+        <p class="desc">Lightweight PDF reader and document manager.</p>
+        <p class="where">Built at Ashtech Solutions</p>
+        <a class="go" href="https://play.google.com/store/apps/details?id=pdf.pdfreader.pdfviewer.pdfeditor.pro" target="_blank" rel="noopener">Open on Google Play</a>
+      </article>
+      <article class="app" style="--c: var(--violet)">
+        <div class="row"><div class="glyph">Wi</div><span class="pill">Live</span></div>
+        <h3>Wi-Fi QR Code Scanner</h3>
+        <p class="pkg">com.wifiqrscanner.wifiqrcodescanner</p>
+        <p class="desc">Connects to a Wi-Fi network instantly by scanning its QR code.</p>
+        <p class="where">Built at Ashtech Solutions</p>
+        <a class="go" href="https://play.google.com/store/apps/details?id=com.wifiqrscanner.wifiqrcodescanner" target="_blank" rel="noopener">Open on Google Play</a>
+      </article>
+      <article class="app" style="--c: var(--sun)">
+        <div class="row"><div class="glyph">Bb</div><span class="pill">Live</span></div>
+        <h3>Tropipop Bubble Shooter</h3>
+        <p class="pkg">com.tropipop.bubbleshooter</p>
+        <p class="desc">Casual bubble shooter game written in Kotlin.</p>
+        <p class="where">Built at Ashtech Solutions</p>
+        <a class="go" href="https://play.google.com/store/apps/details?id=com.tropipop.bubbleshooter" target="_blank" rel="noopener">Open on Google Play</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience" class="wrap">
+    <p class="label" style="--c: var(--coral)">Experience</p>
+    <h2>Where I have worked</h2>
+    <div class="rail">
+      <div class="job" style="--c: var(--sky)">
+        <div class="when">Aug 2026 – Present</div>
+        <div>
+          <h3>Android Developer</h3>
+          <p class="org"><a href="https://funsoltech.com/" target="_blank" rel="noopener">Funsol</a></p>
+          <ul>
+            <li>Develop and maintain Android apps in Kotlin and Jetpack Compose within an agile production team.</li>
+            <li>Work with cross-functional teammates on feature design, code reviews and release cycles.</li>
+            <li>Contribute Firebase-backed features, including authentication and real-time data sync.</li>
+            <li>Published the IPTV Player app on Google Play.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job" style="--c: var(--mint)">
+        <div class="when">Feb 2025 – Aug 2026</div>
+        <div>
+          <h3>Android Developer</h3>
+          <p class="org">Ashtech Solutions</p>
+          <ul>
+            <li>Promoted from intern to developer for technical performance and delivery quality.</li>
+            <li>Developed and published Wi-Fi QR Code Scanner, PDF Reader, ScanQR Pro and Tropipop Bubble Shooter on Google Play.</li>
+            <li>Collaborated on app architecture, feature development and bug fixing for scalable production apps.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job" style="--c: var(--violet)">
+        <div class="when">2023 – Feb 2025</div>
+        <div>
+          <h3>Independent Android Developer</h3>
+          <p class="org">Self-employed</p>
+          <ul>
+            <li>Built a university notification app, a CRM prototype, a parental control prototype and a task manager.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="job" style="--c: var(--sun)">
+        <div class="when">Jan 2024 – Apr 2024</div>
+        <div>
+          <h3>AI Trainee</h3>
+          <p class="org">Corvit Institute</p>
+          <ul>
+            <li>Built machine learning models for bitcoin price forecasting and car price estimation using Python, TensorFlow and Scikit-learn.</li>
+            <li>Visualised trends with Matplotlib and Seaborn.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="wrap">
+    <p class="label" style="--c: var(--violet)">Independent work</p>
+    <h2>Projects</h2>
+    <div class="projects">
+      <article class="proj" style="--c: var(--coral)"><i></i><h3>University Notification App</h3><p>In-app notifications so students and staff receive university updates and announcements.</p></article>
+      <article class="proj" style="--c: var(--sky)"><i></i><h3>NextEra CRM Prototype</h3><p>Project and task management system for business clients.</p></article>
+      <article class="proj" style="--c: var(--mint)"><i></i><h3>Safe Track</h3><p>Parental control prototype that monitors child device activity.</p></article>
+      <article class="proj" style="--c: var(--sun)"><i></i><h3>Task Manager</h3><p>Tasks with descriptions, due dates, priority flags and completion status.</p></article>
+      <article class="proj" style="--c: var(--violet)"><i></i><h3>Course Management App</h3><p>Firebase-powered tracker for academic records and credit hours.</p></article>
+    </div>
+  </section>
+
+  <section id="skills" class="wrap">
+    <p class="label" style="--c: var(--mint)">Toolbox</p>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div style="--c: var(--sky)">
+        <h3>Mobile</h3>
+        <ul class="chips"><li>Kotlin</li><li>Jetpack Compose</li><li>Android Studio</li><li>MVVM</li><li>Room DB</li><li>REST APIs</li><li>Firebase Auth</li><li>Realtime DB</li><li>Play Store</li></ul>
+      </div>
+      <div style="--c: var(--sun)">
+        <h3>AI and Python</h3>
+        <ul class="chips"><li>Python</li><li>TensorFlow</li><li>Scikit-learn</li><li>Pandas</li><li>NumPy</li><li>Matplotlib</li></ul>
+      </div>
+      <div style="--c: var(--coral)">
+        <h3>Tools</h3>
+        <ul class="chips"><li>Git</li><li>GitHub</li> <li>Gitlab</li><li>Figma</li><li>Gradle</li><li>Android Studio Debugger</li></ul>
+      </div>
+    </div>
+    <p class="edu"><b>Education.</b> BS Computer Science, University of Azad Jammu &amp; Kashmir, 2020 – 2024, with a focus on mobile development and AI foundations.</p>
+  </section>
+</main>
+
+tact .label::before { background: var(--ink); }
 .clist { display: grid; gap: 14px; font-size: 17px; }
 .clist .k { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; display: block; opacity: 0.7; }
 .clist a { color: var(--ink); font-weight: 600; }
